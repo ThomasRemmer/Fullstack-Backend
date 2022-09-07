@@ -38,4 +38,9 @@ public class ImageService {
         return true;
     }
 
+    public List<Image> getImageByFaction(String faction){
+        return imageRepository.findAll().stream().filter(image -> image.getFaction().equalsIgnoreCase(faction)).collect(Collectors.toList());
+
+    }
+
 }

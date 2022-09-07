@@ -43,17 +43,12 @@ public class ImageController {
         return ResponseEntity.status(HttpStatus.OK).body(null);
     }
 
+    @GetMapping("/images/faction/{faction}")
+    public ResponseEntity<List<Image>> getImageByFaction(@PathVariable String faction) {
+        List<Image> images = imageService.getImageByFaction(faction);
+        return ResponseEntity.status(HttpStatus.OK).body(images);
+    }
 
 
-//    @GetMapping("/image/{Id}")
-//    public String getImageById(@PathVariable String Id) {
-//
-//        return "Looking for an image with an id of " + Id;
-//    }
-
-//    @GetMapping("image")
-//    public String getImageByName(@RequestParam String name){
-//        return name;
-//    }
 
 }
