@@ -49,6 +49,12 @@ public class ImageController {
         return ResponseEntity.status(HttpStatus.OK).body(images);
     }
 
+    @GetMapping("images/name/{name}")
+    public ResponseEntity<List<Image>> getImageByNameContains(@PathVariable String name) {
+        List<Image> images = imageService.getImageByNameContains(name);
+        return ResponseEntity.status(HttpStatus.OK).body(images);
+    }
+
 
 
 }
