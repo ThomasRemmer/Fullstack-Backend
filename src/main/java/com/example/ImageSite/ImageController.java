@@ -10,12 +10,25 @@ import java.util.List;
 import static java.lang.Integer.parseInt;
 
 @RestController
+@CrossOrigin(origins = "http://localhost:3000")
 public class ImageController {
-
-
 
     @Autowired
     ImageService imageService;
+
+    @Autowired
+    UserService userService;
+
+    @GetMapping("/users")
+    public ResponseEntity<List<User>> getUser() {
+        List<User> users = userService.getAll();
+        return ResponseEntity.status(HttpStatus.OK).body(users);
+    }
+    @PostMapping("/users")
+    public ResponseEntity createUser(@RequestBody User user) {
+        userService.addUser(user);
+        return ResponseEntity.status(HttpStatus.OK).body(null);
+    }
     @GetMapping("/images")
     public ResponseEntity<List<Image>> getImage() {
         List<Image> images = imageService.getAll();
@@ -38,14 +51,14 @@ public class ImageController {
         boolean isDeleted = imageService.deleteImage(parseInt(id));
 
         if (isDeleted == false) {
-            return ResponseEntity.status(HttpStatus.NOT_FOUND).body("Couldnt find requested image");
+            return ResponseEntity.status(HttpStatus.NOT_FOUND).body("Couldn't find requested image");
         }
         return ResponseEntity.status(HttpStatus.OK).body(null);
     }
 
-    @GetMapping("/images/faction/{faction}")
-    public ResponseEntity<List<Image>> getImageByFaction(@PathVariable String faction) {
-        List<Image> images = imageService.getImageByFaction(faction);
+    @GetMapping("/images/date/{date}")
+    public ResponseEntity<List<Image>> getImageByFaction(@PathVariable String date) {
+        List<Image> images = imageService.getImageByDate(date);
         return ResponseEntity.status(HttpStatus.OK).body(images);
     }
 
@@ -54,6 +67,8 @@ public class ImageController {
         List<Image> images = imageService.getImageByNameContains(name);
         return ResponseEntity.status(HttpStatus.OK).body(images);
     }
+
+
 
 
 

@@ -9,7 +9,7 @@ import java.util.List;
 public interface ImageRepository extends JpaRepository<Image, Integer> {
     //methods
 
-    List<Image> findImageByFaction(String faction);
+    List<Image> findImageByDate(String date);
 
     List<Image> findImageByNameContainsIgnoreCase(String name);
 }

@@ -38,8 +38,8 @@ public class ImageService {
         return true;
     }
 
-    public List<Image> getImageByFaction(String faction){
-         List<Image> images = imageRepository.findImageByFaction(faction);
+    public List<Image> getImageByDate(String date){
+         List<Image> images = imageRepository.findImageByDate(date);
          return images;
     }
 
@@ -48,4 +48,8 @@ public class ImageService {
         return images;
     }
 
+//    public List<Image> getCustomImage(String name, String faction) {
+//
+//
+//    }
 }

@@ -4,7 +4,6 @@ import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
-import java.io.File;
 import java.sql.Timestamp;
 import java.util.Date;
 
@@ -14,21 +13,26 @@ public class Image {
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private int id;
     private String name;
-    private String faction;
+    private String date;
+    private String end;
     private String text;
+    private String photo;
     private Timestamp dateCreated;
-//    private File image;
+
+
 
     public Image(){
         this.dateCreated = new Timestamp(new Date().getTime());
     }
 
-    public Image(int id, String name, String faction, String text) {
+    public Image(int id, String name, String date, String text, String photo, String end) {
         this.id = id;
         this.name = name;
-        this.faction = faction;
+        this.date = date;
         this.text = text;
+        this.end = end;
         this.dateCreated = new Timestamp(new Date().getTime());
+        this.photo = photo;
     }
 
     public int getId() {
@@ -47,12 +51,12 @@ public class Image {
         this.name = name;
     }
 
-    public String getFaction() {
-        return faction;
+    public String getDate() {
+        return date;
     }
 
-    public void setFaction(String faction) {
-        this.faction = faction;
+    public void setDate(String date) {
+        this.date = date;
     }
 
     public String getText() {
@@ -71,11 +75,19 @@ public class Image {
         this.dateCreated = dateCreated;
     }
 
-//    public File getImage() {
-//        return image;
-//    }
-//
-//    public void setImage(File image) {
-//        this.image = image;
-//    }
+    public String getPhoto() {
+        return photo;
+    }
+
+    public void setPhoto(String photo) {
+        this.photo = photo;
+    }
+
+    public String getEnd() {
+        return end;
+    }
+
+    public void setEnd(String end) {
+        this.end = end;
+    }
 }
